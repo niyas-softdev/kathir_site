@@ -37,7 +37,7 @@ export default function About() {
                         We specialize in industrial, pharma, and residential projects, delivering world-class quality with a commitment to safety and deadlines.
                     </p>
                     <p className="text-gray-600 mb-8 leading-relaxed">
-                        Our team of expert engineers and skilled workforce ensures that every project stands as a testament to our dedication.
+                        Our team of expert engineers and skilled workforce ensures that project stands as a testament to our dedication.
                         From "Dream to Reality," we are your trusted partners in construction.
                     </p>
 
