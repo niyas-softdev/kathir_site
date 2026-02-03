@@ -33,7 +33,7 @@ export default function About() {
                         Building the Future with <span className="text-secondary">Excellence</span> & Integrity
                     </h2>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                        Established in 2012 by Mr. Azhakathiresan, Kathir Constructions has grown into a premier engineering and construction firm.
+                        Established in 2012 by Mr.Azhakathiresan, Kathir Constructions has grown into a premier engineering and construction firm.
                         We specialize in industrial, pharma, and residential projects, delivering world-class quality with a commitment to safety and deadlines.
                     </p>
                     <p className="text-gray-600 mb-8 leading-relaxed">
