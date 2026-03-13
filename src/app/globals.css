@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F7F7F7;
-  --foreground: #0A1F44;
+  --background: #FFFFFF;
+  --foreground: #0F172A;
   --primary: #0A1F44;
-  --secondary: #FF6B00;
-  --accent: #2F2F2F;
-  --highlight: #C8A951;
+  --secondary: #D4AF37; /* Premium Gold */
+  --accent: #E2E8F0;
+  --highlight: #FBF9F1;
+  
+  --muted: #64748B;
+  --muted-foreground: #475569;
 }
 
 @theme {
@@ -16,6 +19,8 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-highlight: var(--highlight);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }

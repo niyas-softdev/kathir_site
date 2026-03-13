@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,10 +9,12 @@ import Button from "@/components/ui/Button";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "Clients", href: "/clients" },
+    // { name: "About", href: "/about" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Certificates", href: "/certificates" },
+    // { name: "Clients", href: "/clients" },
+        { name: "Services", href: "/services" },
+
     { name: "Contact", href: "/contact" },
 ];
 
@@ -42,20 +44,36 @@ export default function Navbar() {
             )}
         >
             <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
-                    {/* Logo Placeholder */}
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center text-white font-bold text-2xl rounded-sm group-hover:bg-secondary transition-colors">
-                        K
-                    </div>
-                    <div className="flex flex-col">
-                        <span className={cn("text-xl font-bold leading-none tracking-tight uppercase", scrolled || pathname !== "/" ? "text-primary" : "text-white")}>
-                            Kathir
-                        </span>
-                        <span className={cn("text-xs font-medium tracking-widest text-secondary uppercase")}>
-                            Constructions
-                        </span>
-                    </div>
-                </Link>
+                 <Link href="/" className="flex items-center gap-3 group">
+
+    {/* Logo */}
+    <div className="relative w-20 h-20 flex-shrink-0">
+      <Image
+        src="/logo.png"
+        alt="Kathir Constructions Logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
+
+    {/* Logo Text */}
+    <div className="flex flex-col leading-tight">
+      <span
+        className={cn(
+          "text-lg font-bold tracking-tight uppercase",
+          scrolled || pathname !== "/" ? "text-primary" : "text-white"
+        )}
+      >
+        Kathir
+      </span>
+
+      <span className="text-[11px] font-semibold tracking-[0.2em] text-secondary uppercase">
+        Constructions
+      </span>
+    </div>
+
+  </Link>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">

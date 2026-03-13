@@ -18,7 +18,6 @@ export default function AboutPage() {
                     <p className="text-xl text-gray-300">Building trust and excellence since 2012</p>
                 </div>
             </Section>
-            <About />
             <Vision />
             <Achievements />
             <OrgStructure />

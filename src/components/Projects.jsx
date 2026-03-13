@@ -2,134 +2,178 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Section from "@/components/ui/Section";
-import Button from "@/components/ui/Button";
-import { X, ExternalLink, Calendar, Wallet } from "lucide-react";
 import Image from "next/image";
+import { X, Calendar, Wallet, MapPin, Building, Info } from "lucide-react";
 
-// Categories
-const categories = ["All", "Pharma", "Industrial", "Residential", "Government"];
+const categories = ["ALL", "COMMERCIAL CONSTRUCTION", "INDUSTRIAL CONSTRUCTION", "GOVERNMENT PROJECTS"];
 
-// Project Data
-const projects = [
+const projectsData = [
     {
         id: 1,
-        title: "TNEB Engineers Sangam Building",
-        category: "Government",
-        value: "₹2.5 Cr",
-        completed: "2023",
-        description: "Multipurpose administration and community building for TNEB engineers.",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070",
+        title: "M/S. HIBROW HEALTH CARE PVT LTD..",
+        location: "Pukkadurai",
+        category: "COMMERCIAL CONSTRUCTION",
+        value: "Rs. 6.6 Crores",
+        commencement: "01.02.2018",
+        completion: "01.07.2020",
+        workDetails: ["Pharma Company Construction"],
+        image: "/hibrow-company.webp",
     },
     {
         id: 2,
-        title: "Hibrow Health Care Pvt Ltd",
-        category: "Pharma",
-        value: "₹4.8 Cr",
-        completed: "2022",
-        description: "State-of-the-art pharmaceutical manufacturing unit with clean rooms.",
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070",
+        title: "ICON LIFE SCIENCE PVT LTD..",
+        location: "Kannivakkam",
+        category: "COMMERCIAL CONSTRUCTION",
+        value: "Rs. 2 Crores",
+        commencement: "17.01.2017",
+        completion: "31.11.2018",
+        workDetails: ["Training Center Construction work"],
+        image: "/icon-company.jpg",
     },
     {
         id: 3,
-        title: "Icon Life Science Pvt Ltd",
-        category: "Pharma",
-        value: "₹3.2 Cr",
-        completed: "2021",
-        description: "R&D facility and warehouse construction for Icon Life Sciences.",
-        image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070",
+        title: "M/s.STEDMAN PHARMACEUTICALS",
+        location: "Alathur",
+        category: "INDUSTRIAL CONSTRUCTION",
+        value: "Rs. 61 Lakhs",
+        commencement: "17.12.2015",
+        completion: "10.06.2017",
+        workDetails: ["Production Block Expansion"],
+        image: "/stedman-company.jpg",
     },
     {
         id: 4,
-        title: "BHF Engineering Works",
-        category: "Industrial",
-        value: "₹1.8 Cr",
-        completed: "2020",
-        description: "Heavy machinery manufacturing shed with gantry crane provision.",
-        image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2070",
+        title: "TNEB ENGINEERS SANGAM BUILDING",
+        location: "Royapettah, Chennai",
+        category: "GOVERNMENT PROJECTS",
+        value: "Rs. 2.5 Crores",
+        commencement: "10.09.2018",
+        completion: "31.03.2019",
+        workDetails: ["Sangam building Construction"],
+        image: "/tneb1-company.jpg",
     },
     {
         id: 5,
-        title: "Luxury Villa - Anna Nagar",
-        category: "Residential",
-        value: "₹1.5 Cr",
-        completed: "2023",
-        description: "Contemporary 4BHK villa with automated lighting and landscape.",
-        image: "https://images.unsplash.com/photo-1600596542815-e32cb718d202?q=80&w=2070",
+        title: "M/s.PAR FORMULATIONS PVT LTD..",
+        location: "Pudhupakkam",
+        category: "INDUSTRIAL CONSTRUCTION",
+        value: "Rs. 3.5 Crores",
+        commencement: "01.10.2023",
+        completion: "20.08.2024",
+        workDetails: [
+            "Civil structural & architectural work in oncology osd facility.",
+            "ETP, STP & MVR PLANT, GBW Works",
+            "ETP STRUCTURE PLATFORM SSW WORKS"
+        ],
+        image: "/par-company.jpg",
     },
     {
         id: 6,
-        title: "Par Formulations",
-        category: "Pharma",
-        value: "₹5.1 Cr",
-        completed: "2024",
-        description: "Large scale tablet manufacturing block and packaging unit.",
-        image: "https://images.unsplash.com/photo-1574359611681-d779dd5c28e8?q=80&w=2070",
+        title: "M/s.SAIMIRRA INNOPHARM PVT LTD..",
+        location: "Ambattur",
+        category: "INDUSTRIAL CONSTRUCTION",
+        value: "Rs. 4.75 Crores",
+        commencement: "01.06.2022",
+        completion: "15.05.2023",
+        workDetails: ["Production Building, Office & Warehouse & Utility Area"],
+        image: "/saimira-company.jpg",
     },
+    {
+        id: 7,
+        title: "M/s.BHF ENGINEERING WORKS",
+        location: "Cuddalore",
+        projectOwner: "Ministry of Fisheries and Fishermen Welfare Department, Govt of Tamilnadu",
+        category: "GOVERNMENT PROJECTS",
+        value: "Rs. 1.35 Crores",
+        commencement: "25.12.2023",
+        completion: "13.05.2025",
+        workDetails: [
+            "Construction of Fish landing Centers at Sothikuppam village and an Auction hall at Thaikal Thonithurai Village at Cuddalore District"
+        ],
+        image: "/BHF.jpg",
+    },
+    {
+        id: 8,
+        title: "M/s.PAR ACTIVE TECHNOLOGIES PVT LTD..",
+        location: "Alathur",
+        category: "INDUSTRIAL CONSTRUCTION",
+        value: "Rs. 71 Lakh",
+        commencement: "01.08.2025",
+        completion: "01.11.2025 (95% Work Completed)",
+        workDetails: ["Hazardous & scent solvent Area Shed Work"],
+        image: "/par-active-company.jpg",
+    }
 ];
 
 export default function Projects() {
-    const [filter, setFilter] = useState("All");
+    const [filter, setFilter] = useState("ALL");
     const [selectedProject, setSelectedProject] = useState(null);
 
-    const filteredProjects = projects.filter(
-        (p) => filter === "All" || p.category === filter
+    const filteredProjects = projectsData.filter(
+        (p) => filter === "ALL" || p.category === filter
     );
 
     return (
-        <Section id="projects" className="bg-white">
-            <div className="text-center mb-12">
-                <span className="text-secondary font-bold tracking-wider uppercase mb-2 block">Our Portfolio</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">Featured <span className="text-secondary">Projects</span></h2>
-
-                {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <section className="bg-[#f8f9fa] py-16 pb-24 relative z-10 w-full">
+            {/* Filters */}
+            <div className="container mx-auto px-4">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-12">
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
-                            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${filter === cat
-                                    ? "bg-primary text-white shadow-lg scale-105"
-                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            className={`text-sm md:text-base font-bold uppercase tracking-wider transition-colors duration-300 ${filter === cat
+                                    ? "text-[#FFB800]"
+                                    : "text-gray-800 hover:text-[#FFB800]"
                                 }`}
                         >
                             {cat}
                         </button>
                     ))}
                 </div>
-            </div>
 
-            {/* Grid */}
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <AnimatePresence>
-                    {filteredProjects.map((project) => (
-                        <motion.div
-                            layout
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                            key={project.id}
-                            className="group relative overflow-hidden rounded-xl shadow-md cursor-pointer"
-                            onClick={() => setSelectedProject(project)}
-                        >
-                            <div className="aspect-[4/3] relative">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 text-center">
-                                    <h3 className="text-xl font-bold mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{project.title}</h3>
-                                    <p className="text-secondary font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{project.category}</p>
-                                    <span className="text-sm underline translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">View Details</span>
+                {/* Grid */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1280px] mx-auto w-full">
+                    <AnimatePresence>
+                        {filteredProjects.map((project) => (
+                            <motion.div
+                                layout
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.3 }}
+                                key={project.id}
+                                className="bg-white rounded-none shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col group cursor-pointer"
+                                onClick={() => setSelectedProject(project)}
+                            >
+                                <div className="aspect-[4/3] relative w-full overflow-hidden">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            </motion.div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-[17px] font-medium text-gray-900 mb-1 leading-snug line-clamp-2 min-h-[48px]">{project.title}</h3>
+                                    <p className="text-[15px] text-gray-400 font-normal mb-6 flex-grow">{project.location}</p>
+
+                                    <div className="border-t border-gray-100 mt-auto pt-4 flex justify-between items-center text-[15px] text-gray-500">
+                                        <span className="font-medium text-gray-600">{project.value}</span>
+                                        <span className="text-gray-400">
+                                            {project.commencement.split('.')[2] || project.commencement.split('-')[0]} - {project.completion.split('.')[2]?.substring(0, 4) || project.completion.split('-')[0]?.substring(0, 4) || project.completion.split(' ')[0].split('.')[2] || project.completion}
+                                        </span>
+                                        <span className="text-gray-400 hover:text-[#FFB800] transition-colors">
+                                            View More
+                                        </span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+            </div>
 
             {/* Modal */}
             <AnimatePresence>
@@ -145,42 +189,82 @@ export default function Projects() {
                             initial={{ y: 50, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 50, opacity: 0 }}
-                            className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden relative"
+                            className="bg-white rounded-xl w-full max-w-3xl overflow-hidden relative shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
                                 onClick={() => setSelectedProject(null)}
-                                className="absolute top-4 right-4 z-10 p-2 bg-white/50 hover:bg-white rounded-full transition-colors"
+                                className="absolute top-4 right-4 z-20 p-2 bg-black/50 text-white hover:bg-black rounded-full transition-colors"
                             >
                                 <X size={20} />
                             </button>
 
-                            <div className="relative h-64 w-full">
+                            <div className="relative h-64 md:h-72 w-full">
                                 <Image src={selectedProject.image} fill className="object-cover" alt={selectedProject.title} />
-                            </div>
-
-                            <div className="p-8">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <span className="text-secondary text-sm font-bold uppercase tracking-wider mb-1 block">{selectedProject.category}</span>
-                                        <h3 className="text-2xl font-bold text-primary">{selectedProject.title}</h3>
-                                    </div>
-                                    <div className="flex flex-col items-end gap-1 text-sm font-medium text-gray-500">
-                                        <div className="flex items-center gap-1"><Calendar size={14} /> {selectedProject.completed}</div>
-                                        <div className="flex items-center gap-1 text-green-600"><Wallet size={14} /> {selectedProject.value}</div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                <div className="absolute bottom-6 left-6 right-6 text-white">
+                                    <span className="bg-[#FFB800] text-black text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-3 inline-block">
+                                        {selectedProject.category}
+                                    </span>
+                                    <h3 className="text-2xl md:text-3xl font-bold mb-1">{selectedProject.title}</h3>
+                                    <div className="flex items-center text-gray-200">
+                                        <MapPin size={16} className="mr-1" />
+                                        <span>{selectedProject.location}</span>
                                     </div>
                                 </div>
+                            </div>
 
-                                <p className="text-gray-600 leading-relaxed mb-6">
-                                    {selectedProject.description}
-                                </p>
+                            <div className="p-6 md:p-8 max-h-[50vh] overflow-y-auto">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-gray-100 pb-8">
+                                    <div className="flex items-start">
+                                        <div className="bg-gray-100 p-3 rounded-lg mr-4 text-[#FFB800]">
+                                            <Wallet size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-gray-500 font-medium">Contract Value</p>
+                                            <p className="text-lg font-bold text-gray-900">{selectedProject.value}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start">
+                                        <div className="bg-gray-100 p-3 rounded-lg mr-4 text-[#FFB800]">
+                                            <Calendar size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-gray-500 font-medium">Timeline</p>
+                                            <p className="text-lg font-bold text-gray-900">
+                                                {selectedProject.commencement} to {selectedProject.completion}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {selectedProject.projectOwner && (
+                                        <div className="flex items-start md:col-span-2">
+                                            <div className="bg-gray-100 p-3 rounded-lg mr-4 text-[#FFB800]">
+                                                <Building size={24} />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm text-gray-500 font-medium">Project Owner</p>
+                                                <p className="text-lg font-bold text-gray-900">{selectedProject.projectOwner}</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
 
-                                <Button className="w-full">Get Similar Quote</Button>
+                                <div>
+                                    <div className="flex items-center mb-4">
+                                        <Info size={20} className="text-[#FFB800] mr-2" />
+                                        <h4 className="text-xl font-bold text-gray-900">Work Details</h4>
+                                    </div>
+                                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                                        {selectedProject.workDetails.map((detail, idx) => (
+                                            <li key={idx} className="leading-relaxed">{detail}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </Section>
+        </section>
     );
 }
