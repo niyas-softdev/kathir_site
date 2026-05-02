@@ -66,8 +66,7 @@ export default function Footer() {
                             <li className="flex items-start gap-4">
                                 <MapPin className="text-secondary shrink-0 mt-1" size={20} />
                                 <span>
-                                    No. 123, Construction Avenue, <br />
-                                    Industrial Estate, Chennai - 600032.
+                                     No.446, CSI School Street <br /> Putlur & Post, Thiruvallur - 602025
                                 </span>
                             </li>
                             <li className="flex items-center gap-4">

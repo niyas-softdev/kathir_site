@@ -3,49 +3,67 @@
 import Section from "@/components/ui/Section";
 
 const clients = [
-    "Vivimed Labs",
-    "Nuray Chemicals",
-    "Mesmer Pharmaceuticals",
-    "Yuga Pharma",
-    "Par Formulations",
-    "Icon Life Science",
-    "TNEB Engineers Sangam",
-    "Hibrow Health Care",
+    { name: "Vivimed", logo: "/vivimed.webp" },
+    { name: "Nuray", logo: "/nuray.png" },
+    { name: "Saimirra", logo: "/saimira-logo.png" },
+    { name: "Stedman", logo: "/stedman-logo.png" },
+    { name: "Mesmer", logo: "/mesmer.jpeg" },
+    { name: "Yuga Pharma", logo: "/yuga-logo.jpg" },
+    { name: "Par Formulations", logo: "/par-logo.webp" },
+    { name: "Icon Life Science", logo: "/icon-logo.jpg" },
+    { name: "Hibrow", logo: "/hibrow-logo.png" },
 ];
 
 export default function Clients() {
     return (
         <Section className="bg-gray-50 py-16 overflow-hidden">
+
+            {/* Heading */}
             <div className="text-center mb-10">
-                <h3 className="text-xl font-bold text-gray-400 uppercase tracking-widest">Trusted By Industry Leaders</h3>
+                <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
+                    Trusted by leading organizations
+                </h2>
             </div>
 
             <div className="relative w-full">
-                {/* Gradients to fade edges */}
-                <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-                <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
 
-                <div className="flex w-[200%] animate-loop-scroll">
-                    {/* Double the list for seamless loop */}
+                {/* Fade edges */}
+                <div className="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+
+                {/* Marquee */}
+                <div className="flex items-center gap-16 w-max animate-marquee">
+
                     {[...clients, ...clients].map((client, i) => (
-                        <div key={i} className="w-[200px] md:w-[250px] shrink-0 flex items-center justify-center px-4">
-                            <div className="text-xl md:text-2xl font-bold text-gray-300 hover:text-primary transition-colors cursor-default whitespace-nowrap">
-                                {client}
-                                {/* You can replace text with Logos here */}
-                            </div>
+                        <div key={i} className="flex items-center justify-center">
+                            <img
+                                src={client.logo}
+                                alt={client.name}
+                                className="h-10 md:h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                            />
                         </div>
                     ))}
+
                 </div>
             </div>
 
-            {/* Add custom animation style in globals.css or here via style tag */}
+            {/* Animation */}
             <style jsx>{`
-        @keyframes loop-scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
-        .animate-loop-scroll {
-            animation: loop-scroll 20s linear infinite;
+
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+
+        .animate-marquee:hover {
+          animation-play-state: paused;
         }
       `}</style>
         </Section>

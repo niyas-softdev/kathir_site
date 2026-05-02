@@ -1,7 +1,7 @@
 import Projects from "@/components/Projects";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-
+import Clients from "@/components/Clients";
 export const metadata = {
     title: "Portfolio | Kathir Constructions",
     description: "Explore our completed projects across various industries.",
@@ -49,6 +49,8 @@ export default function PortfolioPage() {
             <div className="h-16 md:h-24 bg-[#f8f9fa]"></div>
 
             <Projects />
+            <Clients />
+
         </main>
     );
 }

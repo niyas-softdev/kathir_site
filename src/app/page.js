@@ -3,12 +3,14 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Clients from "@/components/Clients";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
       <About />
+      <Clients/>
       <Services />
       <Process />
       <WhyChooseUs />
