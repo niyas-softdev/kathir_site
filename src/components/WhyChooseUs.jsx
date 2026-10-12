@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
                         transition={{ delay: 0.2 }}
                         className="text-gray-600 text-sm md:text-base leading-relaxed mb-6"
                     >
-                        Choosing Kathir Constructions means choosing uncompromising quality, absolute transparency, and a partner fully committed to bringing your vision to life exactly as you imagined it.
+                        Choosing Kathir Constructions means Choosing uncompromising quality, absolute transparency, and a partner fully committed to bringing your vision to life exactly as you imagined it.
                     </motion.p>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
