@@ -66,12 +66,15 @@ export default function Footer() {
                             <li className="flex items-start gap-4">
                                 <MapPin className="text-secondary shrink-0 mt-1" size={20} />
                                 <span>
-                                     No.446, CSI School Street <br /> Putlur & Post, Thiruvallur - 602025
+                                    No.446, CSI School Street <br /> Putlur &amp; Post, Thiruvallur - 602025.
                                 </span>
                             </li>
-                            <li className="flex items-center gap-4">
-                                <Phone className="text-secondary shrink-0" size={20} />
-                                <a href="tel:+919876543210" className="hover:text-white">+91 98765 43210</a>
+                            <li className="flex items-start gap-4">
+                                <Phone className="text-secondary shrink-0 mt-1" size={20} />
+                                <div className="flex flex-col gap-1">
+                                    <a href="tel:+919750813292" className="hover:text-white transition-colors">+91 97508 13292</a>
+                                    <a href="tel:+917358387163" className="hover:text-white transition-colors">+91 73583 87163</a>
+                                </div>
                             </li>
                             <li className="flex items-center gap-4">
                                 <Mail className="text-secondary shrink-0" size={20} />

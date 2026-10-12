@@ -12,7 +12,7 @@ const navLinks = [
     // { name: "About", href: "/about" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Certificates", href: "/certificates" },
-        { name: "Services", href: "/services" },
+    { name: "Services", href: "/services" },
 
     { name: "Contact", href: "/contact" },
 ];
@@ -43,36 +43,36 @@ export default function Navbar() {
             )}
         >
             <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-                 <Link href="/" className="flex items-center gap-3 group">
+                <Link href="/" className="flex items-center gap-3 group">
 
-    {/* Logo */}
-    <div className="relative w-20 h-20 flex-shrink-0">
-      <Image
-        src="/logo.png"
-        alt="Kathir Constructions Logo"
-        fill
-        className="object-contain"
-        priority
-      />
-    </div>
+                    {/* Logo */}
+                    <div className="relative w-20 h-20 flex-shrink-0">
+                        <Image
+                            src="/logo.png"
+                            alt="Kathir Constructions Logo"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
+                    </div>
 
-    {/* Logo Text */}
-    <div className="flex flex-col leading-tight">
-      <span
-        className={cn(
-          "text-lg font-bold tracking-tight uppercase",
-          scrolled || pathname !== "/" ? "text-primary" : "text-white"
-        )}
-      >
-        Kathir
-      </span>
+                    {/* Logo Text */}
+                    <div className="flex flex-col leading-tight">
+                        <span
+                            className={cn(
+                                "text-lg font-bold tracking-tight uppercase",
+                                scrolled || pathname !== "/" ? "text-primary" : "text-white"
+                            )}
+                        >
+                            Kathir
+                        </span>
 
-      <span className="text-[11px] font-semibold tracking-[0.2em] text-secondary uppercase">
-        Constructions
-      </span>
-    </div>
+                        <span className="text-[11px] font-semibold tracking-[0.2em] text-secondary uppercase">
+                            Constructions
+                        </span>
+                    </div>
 
-  </Link>
+                </Link>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
@@ -92,11 +92,11 @@ export default function Navbar() {
                 </nav>
 
                 <div className="hidden md:flex items-center gap-4">
-                    <a href="tel:+919876543210" className={cn("flex items-center gap-2 font-bold", scrolled || pathname !== "/" ? "text-primary" : "text-white")}>
+                    <a href="tel:+919750813292" className={cn("flex items-center gap-2 font-bold", scrolled || pathname !== "/" ? "text-primary" : "text-white")}>
                         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-white">
                             <Phone size={14} />
                         </div>
-                        <span className="hidden lg:inline">+91 98765 43210</span>
+                        <span className="hidden lg:inline">+91 97508 13292</span>
                     </a>
                     <Link href="/contact">
                         <Button variant={scrolled || pathname !== "/" ? "primary" : "white"} size="sm" className="hidden lg:flex gap-2">
@@ -127,7 +127,19 @@ export default function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <Button className="w-full mt-4">Get a Free Quote</Button>
+                    <div className="pt-2 flex flex-col gap-2 border-b border-gray-100 pb-3">
+                        <a href="tel:+919750813292" className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary">
+                            <Phone size={14} className="text-secondary" />
+                            +91 97508 13292
+                        </a>
+                        <a href="tel:+917358387163" className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary">
+                            <Phone size={14} className="text-secondary" />
+                            +91 73583 87163
+                        </a>
+                    </div>
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                        <Button className="w-full mt-2">Get a Free Quote</Button>
+                    </Link>
                 </div>
             )}
         </header>

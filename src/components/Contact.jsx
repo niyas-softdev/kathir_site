@@ -24,8 +24,11 @@ export default function Contact() {
                                 <MapPin />
                             </div>
                             <div>
-                                <h4 className="text-xl font-bold mb-2">Head Office</h4>
-                                <p className="text-gray-400">No. 123, Construction Avenue, Industrial Estate, <br />Chennai - 600032, Tamil Nadu.</p>
+                                <h4 className="text-xl font-bold mb-2">Office Address</h4>
+                                <p className="text-gray-400">
+                                    No.446, CSI School Street,<br />
+                                    Putlur &amp; Post, Thiruvallur - 602025.
+                                </p>
                             </div>
                         </div>
 
@@ -35,8 +38,12 @@ export default function Contact() {
                             </div>
                             <div>
                                 <h4 className="text-xl font-bold mb-2">Phone</h4>
-                                <p className="text-gray-400">+91 98765 43210</p>
-                                <p className="text-gray-400">+91 98765 43211</p>
+                                <p className="text-gray-400">
+                                    <a href="tel:+919750813292" className="hover:text-secondary transition-colors block">+91 97508 13292</a>
+                                </p>
+                                <p className="text-gray-400">
+                                    <a href="tel:+917358387163" className="hover:text-secondary transition-colors block">+91 73583 87163</a>
+                                </p>
                             </div>
                         </div>
 
